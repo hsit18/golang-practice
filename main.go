@@ -1,9 +1,10 @@
 package main
 
 import (
-	"cards/deck"
 	"fmt"
 	"time"
+
+	"cards/deck"
 )
 
 func main() {
