@@ -1,15 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"main/deck"
+	"time"
+)
 
 func main() {
-	fmt.Println("Starting main....")
-	cards := newDeck()
-	hand, remainingDeck := deal(cards, 5)
-	hand.print()
+	fmt.Println("Starting main....", time.Now())
+	cards := deck.NewDeck()
+	hand, remainingDeck := deck.Deal(cards, 5)
+	hand.Print()
 	fmt.Println("remainingDeck....")
-	remainingDeck.print()
-	remainingDeck.saveToFile("cards.txt")
+	remainingDeck.Print()
+	remainingDeck.SaveToFile("cards.txt")
 }
 
 func newCard() string {
