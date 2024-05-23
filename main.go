@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"cards/channeldemo"
 	"cards/deck"
+	"cards/mapsdemo"
 	"cards/structsdemo"
 	"fmt"
 	"os"
@@ -19,6 +20,7 @@ func main() {
 			1. Fibonacci
 			2. Cards
 			3. Structs
+			4. Maps
 	`)
 
 	for scanner.Scan() {
@@ -32,6 +34,8 @@ func main() {
 			deck.Execute()
 		case "3":
 			structsdemo.Execute()
+		case "4":
+			mapsdemo.Execute()
 		}
 
 	}
