@@ -10,6 +10,22 @@ import (
 
 type deck []string
 
+func Execute() {
+	cards := NewDeck()
+	cards.Shuffle()
+	fmt.Println("cards suffled....")
+	cards.Print()
+
+	hand, remainingDeck := Deal(cards, 5)
+	hand.Print()
+	//fmt.Println("remainingDeck....")
+	//remainingDeck.Print()
+	remainingDeck.SaveToFile("cards.txt")
+
+	deckContent := NewDeckFromFile("cards.txt")
+	fmt.Println("deckContent....")
+	deckContent.Print()
+}
 func NewDeck() deck {
 	cards := deck{}
 
