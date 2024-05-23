@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"cards/channeldemo"
 	"cards/deck"
+	"cards/structsdemo"
 	"fmt"
 	"os"
 	"time"
@@ -17,6 +18,7 @@ func main() {
 		Select Programs to run:
 			1. Fibonacci
 			2. Cards
+			3. Structs
 	`)
 
 	for scanner.Scan() {
@@ -41,6 +43,9 @@ func main() {
 			deckContent := deck.NewDeckFromFile("cards.txt")
 			fmt.Println("deckContent....")
 			deckContent.Print()
+
+		case "3":
+			structsdemo.Execute()
 		}
 
 	}
