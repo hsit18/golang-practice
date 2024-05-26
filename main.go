@@ -5,6 +5,7 @@ import (
 	"cards/channeldemo"
 	"cards/deck"
 	"cards/mapsdemo"
+	"cards/restapidemo"
 	"cards/structsdemo"
 	"fmt"
 	"os"
@@ -21,6 +22,7 @@ func main() {
 			2. Cards
 			3. Structs
 			4. Maps
+			5. API Route - Users using MUX
 	`)
 
 	for scanner.Scan() {
@@ -36,6 +38,9 @@ func main() {
 			structsdemo.Execute()
 		case "4":
 			mapsdemo.Execute()
+		case "5":
+			restapidemo.InitialMigration()
+			restapidemo.InitialRouter()
 		}
 
 	}
