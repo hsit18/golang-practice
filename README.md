@@ -15,3 +15,6 @@ Programs samples:
 
 DataTypes 
 ![dataTypes](https://github.com/hsit18/golang-practice/blob/main/datatypes.png?raw=true)
+
+
+protoc --go_out=. --go-grpc_out=. protobuf/*.proto 
