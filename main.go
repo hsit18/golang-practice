@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"cards/channeldemo"
 	"cards/deck"
+	"cards/grpcdemo"
 	"cards/mapsdemo"
 	"cards/restapidemo"
 	"cards/structsdemo"
@@ -23,6 +24,7 @@ func main() {
 			3. Structs
 			4. Maps
 			5. API Route - Users using MUX
+			6. GRPC demo
 	`)
 
 	for scanner.Scan() {
@@ -41,6 +43,8 @@ func main() {
 		case "5":
 			restapidemo.InitialMigration()
 			restapidemo.InitialRouter()
+		case "6":
+			grpcdemo.Execute()
 		}
 
 	}

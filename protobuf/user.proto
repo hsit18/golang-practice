@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "./grpcdemo";
+option go_package = "./grpcdemo/generated";
 
 service UserService {
     rpc createUser(UserRequest) returns (createUserResponse) {}
