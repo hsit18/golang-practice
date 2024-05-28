@@ -3,8 +3,18 @@ syntax = "proto3";
 option go_package = "./grpcdemo/generated";
 
 service UserService {
-    rpc createUser(creeateUserRequest) returns (createUserResponse) {}
+    rpc getUsers(noParams) returns (getUsersResponse) {}
+    rpc getUser(userRequestParam) returns (createUserResponse) {}
+    rpc createUser(createUserRequest) returns (createUserResponse) {}
+    rpc deleteUser(userRequestParam) returns (DeleteUserResponse) {}
 }
+
+message noParams {
+};
+
+message DeleteUserResponse{
+    bool success =1;
+};
 
 message User {
     int32 ID = 1;
@@ -13,10 +23,18 @@ message User {
     string email = 4;
 };
 
-message creeateUserRequest {
+message createUserRequest {
     User user = 1;
 };
 
 message createUserResponse {
     User user = 1;
 };
+
+message getUsersResponse {
+    repeated User users = 1;
+};
+
+message userRequestParam {
+    int32 ID = 1;
+}

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"time"
 
 	"google.golang.org/grpc"
 	"gorm.io/driver/sqlite"
@@ -18,10 +19,12 @@ type UserService struct {
 }
 
 type User struct {
-	gorm.Model
-	Firstname string `json:"firstname"`
-	Lastname  string `json:"lastname"`
-	Email     string `json:"email"`
+	ID        int32     `gorm:"primarykey"`
+	Firstname string    `json:"firstname"`
+	Lastname  string    `json:"lastname"`
+	Email     string    `json:"email"`
+	CreatedAt time.Time `gorm:"autoCreateTime:false"`
+	UpdatedAt time.Time `gorm:"autoUpdateTime:false"`
 }
 
 var DB *gorm.DB
@@ -54,10 +57,50 @@ func Execute() {
 
 }
 
-func (u *UserService) CreateUser(ctx context.Context, req *pb.CreeateUserRequest) (*pb.CreateUserResponse, error) {
+func (u *UserService) GetUsers(ctx context.Context, req *pb.NoParams) (*pb.GetUsersResponse, error) {
+	user := []*pb.User{}
 
-	fmt.Println(req)
+	DB.Find(&user)
 
+	return &pb.GetUsersResponse{
+		Users: user,
+	}, nil
+}
+
+func (u *UserService) GetUser(ctx context.Context, req *pb.UserRequestParam) (*pb.CreateUserResponse, error) {
+	var user User
+
+	res := DB.Find(&user, "id = ?", req.GetID())
+
+	if res.RowsAffected == 0 {
+		return nil, errors.New("movie not found")
+	}
+
+	return &pb.CreateUserResponse{
+		User: &pb.User{
+			ID:        int32(user.ID),
+			Firstname: user.Firstname,
+			Lastname:  user.Lastname,
+			Email:     user.Email,
+		},
+	}, nil
+}
+
+func (u *UserService) DeleteUser(ctx context.Context, req *pb.UserRequestParam) (*pb.DeleteUserResponse, error) {
+	var user User
+
+	res := DB.Where("id = ?", req.GetID()).Delete(&user)
+
+	if res.RowsAffected == 0 {
+		return nil, errors.New("movie not found")
+	}
+
+	return &pb.DeleteUserResponse{
+		Success: true,
+	}, nil
+}
+
+func (u *UserService) CreateUser(ctx context.Context, req *pb.CreateUserRequest) (*pb.CreateUserResponse, error) {
 	user := req.GetUser()
 	data := User{
 		Firstname: user.GetFirstname(),
@@ -66,7 +109,6 @@ func (u *UserService) CreateUser(ctx context.Context, req *pb.CreeateUserRequest
 	}
 
 	fmt.Printf("%+v\n", data)
-
 	res := DB.Create(&data)
 
 	fmt.Printf("AFTER DB insert: %+v\n", data)
@@ -83,5 +125,4 @@ func (u *UserService) CreateUser(ctx context.Context, req *pb.CreeateUserRequest
 			Email:     data.Email,
 		},
 	}, nil
-
 }
