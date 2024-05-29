@@ -6,6 +6,7 @@ import (
 	"cards/deck"
 	"cards/grpcdemo"
 	"cards/mapsdemo"
+	"cards/notesApp"
 	"cards/restapidemo"
 	"cards/structsdemo"
 	"fmt"
@@ -23,8 +24,9 @@ func main() {
 			2. Cards
 			3. Structs
 			4. Maps
-			5. API Route - Users using MUX
-			6. GRPC demo
+			5. NotesApp - Interfaces demo
+			6. API Route - Users using MUX
+			7. GRPC demo
 	`)
 
 	for scanner.Scan() {
@@ -41,9 +43,11 @@ func main() {
 		case "4":
 			mapsdemo.Execute()
 		case "5":
+			notesApp.Execute()
+		case "6":
 			restapidemo.InitialMigration()
 			restapidemo.InitialRouter()
-		case "6":
+		case "7":
 			grpcdemo.Execute()
 		}
 
