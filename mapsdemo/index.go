@@ -13,6 +13,13 @@ func Execute() {
 	fmt.Println(colors)
 	fmt.Println(len(colors))
 	delete(colors, "red")
+
+	if _, ok := colors["red"]; ok {
+		fmt.Println("Red color exists")
+	} else {
+		fmt.Println("Red color does not exist")
+	}
+
 	printMap(colors)
 }
 
