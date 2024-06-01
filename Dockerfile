@@ -1,4 +1,4 @@
-FROM golang:1.21-alpine
+FROM --platform=linux/arm64 golang:alpine
 
 WORKDIR /app
 
@@ -7,7 +7,12 @@ WORKDIR /app
 
 COPY . .
 
+RUN go mod download
+
 RUN go build
+
+RUN pwd
+RUN echo $GOPATH
 
 EXPOSE 8080
 RUN chmod 755 cards
