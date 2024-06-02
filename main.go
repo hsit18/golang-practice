@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"cards/channeldemo"
 	"cards/deck"
+	"cards/goroutinedemo"
 	"cards/grpcdemo"
 	"cards/mapsdemo"
 	"cards/notesApp"
@@ -27,6 +28,7 @@ func main() {
 			5. NotesApp - Interfaces demo
 			6. API Route - Users using MUX
 			7. GRPC demo
+			8. GO Routine with channels
 	`)
 
 	for scanner.Scan() {
@@ -49,6 +51,8 @@ func main() {
 			restapidemo.InitialRouter()
 		case "7":
 			grpcdemo.Execute()
+		case "8":
+			goroutinedemo.Execute()
 		}
 
 	}
