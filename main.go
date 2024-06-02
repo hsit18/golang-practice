@@ -29,6 +29,7 @@ func main() {
 			6. API Route - Users using MUX
 			7. GRPC demo
 			8. GO Routine with channels
+			9. GO Routine with wait Group
 	`)
 
 	for scanner.Scan() {
@@ -53,6 +54,8 @@ func main() {
 			grpcdemo.Execute()
 		case "8":
 			goroutinedemo.Execute()
+		case "9":
+			goroutinedemo.ExecuteWaitGroup()
 		}
 
 	}
