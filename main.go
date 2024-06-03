@@ -2,17 +2,18 @@ package main
 
 import (
 	"bufio"
-	"cards/channeldemo"
-	"cards/deck"
-	"cards/goroutinedemo"
-	"cards/grpcdemo"
-	"cards/mapsdemo"
-	"cards/notesApp"
-	"cards/restapidemo"
-	"cards/structsdemo"
 	"fmt"
 	"os"
 	"time"
+
+	"github.com/hsit18/golang-practice/channeldemo"
+	"github.com/hsit18/golang-practice/deck"
+	"github.com/hsit18/golang-practice/goroutinedemo"
+	"github.com/hsit18/golang-practice/grpcdemo"
+	"github.com/hsit18/golang-practice/mapsdemo"
+	"github.com/hsit18/golang-practice/notesApp"
+	"github.com/hsit18/golang-practice/restapidemo"
+	"github.com/hsit18/golang-practice/structsdemo"
 )
 
 func main() {

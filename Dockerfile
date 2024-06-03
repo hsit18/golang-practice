@@ -15,6 +15,6 @@ RUN pwd
 RUN echo $GOPATH
 
 EXPOSE 8080
-RUN chmod 755 cards
+RUN chmod 755 golang-practice
 
-CMD [ "./cards" ]
+CMD [ "./golang-practice" ]

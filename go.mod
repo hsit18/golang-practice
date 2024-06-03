@@ -1,4 +1,4 @@
-module cards
+module github.com/hsit18/golang-practice
 
 go 1.21.10
 

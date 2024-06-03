@@ -1,13 +1,14 @@
 package grpcdemo
 
 import (
-	pb "cards/grpcdemo/generated"
 	"context"
 	"errors"
 	"fmt"
 	"log"
 	"net"
 	"time"
+
+	pb "github.com/hsit18/golang-practice/grpcdemo/generated"
 
 	"google.golang.org/grpc"
 	"gorm.io/driver/sqlite"

@@ -2,10 +2,11 @@ package notesApp
 
 import (
 	"bufio"
-	"cards/notesApp/todo"
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/hsit18/golang-practice/notesApp/todo"
 )
 
 type outputable interface {
