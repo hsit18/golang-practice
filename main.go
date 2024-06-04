@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/hsit18/golang-practice/channeldemo"
+	"github.com/hsit18/golang-practice/contextdemo"
 	"github.com/hsit18/golang-practice/deck"
 	"github.com/hsit18/golang-practice/goroutinedemo"
 	"github.com/hsit18/golang-practice/grpcdemo"
@@ -31,6 +32,7 @@ func main() {
 			7. GRPC demo
 			8. GO Routine with channels
 			9. GO Routine with wait Group
+			10. Context demo
 	`)
 
 	for scanner.Scan() {
@@ -57,6 +59,8 @@ func main() {
 			goroutinedemo.Execute()
 		case "9":
 			goroutinedemo.ExecuteWaitGroup()
+		case "10":
+			contextdemo.Execute()
 		}
 
 	}
