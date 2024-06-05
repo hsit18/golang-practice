@@ -49,6 +49,7 @@ func Execute() {
 
 	grpcServer := grpc.NewServer()
 	pb.RegisterUserServiceServer(grpcServer, &UserService{})
+	pb.RegisterGreetServiceServer(grpcServer, &GreetServer{})
 	fmt.Printf("GRPC server started at %v", listen.Addr().String())
 	InitialMigration()
 	grpcErr := grpcServer.Serve(listen)

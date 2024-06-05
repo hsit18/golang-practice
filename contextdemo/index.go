@@ -20,6 +20,7 @@ func Execute() {
 				case <-ctx.Done():
 					fmt.Println("DONE CONTEXT")
 					return // returning not to leak the goroutine
+
 				case dst <- n:
 					n++
 				}
@@ -29,6 +30,8 @@ func Execute() {
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
+	err := ctx.Err()
+	fmt.Println("Error: ", err)
 	defer cancel() // cancel when we are finished consuming integers
 
 	for n := range gen(ctx) {
