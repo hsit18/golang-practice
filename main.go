@@ -33,6 +33,7 @@ func main() {
 			8. GO Routine with channels
 			9. GO Routine with wait Group
 			10. Context demo
+			11. GRPC greet client
 	`)
 
 	for scanner.Scan() {
@@ -61,6 +62,8 @@ func main() {
 			goroutinedemo.ExecuteWaitGroup()
 		case "10":
 			contextdemo.Execute()
+		case "11":
+			grpcdemo.ExecuteGreetClient()
 		}
 
 	}
